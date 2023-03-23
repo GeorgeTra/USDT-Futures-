@@ -4,8 +4,6 @@ import time
 
 
 def get_price():
-    """Получаем текущую цену из API binance"""
-
     url = 'https://api.binance.com/api/v3/ticker/price?symbol=ETHUSDT'
     response = requests.get(url)
     data = json.loads(response.text)
@@ -13,11 +11,6 @@ def get_price():
 
 
 def check_price():
-    """
-    Каждую секунду проверяем текущую цену и сохраняем ее в список prices.
-    Держим в этом списке цены за последние 60 минут,
-    устаревшие данные удаляем.
-    """
     current_price = get_price()
     prices = [current_price]
     while True:
